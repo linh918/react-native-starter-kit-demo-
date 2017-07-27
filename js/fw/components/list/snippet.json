@@ -1,0 +1,554 @@
+{
+/*
+	// Place your snippets for JavaScript here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	"Print to console": {
+		"prefix": "log",
+		"body": [
+			"console.log('$1');",
+			"$2"
+		],
+		"description": "Log output to console"
+	}
+*/
+
+ "For Loop": {
+        "prefix": "for",
+        "body": [
+            "for (var ${1:index} = 0; ${1:index} < ${2:array}.length; ${1:index}++) {",
+            "\tvar ${3:element} = ${2:array}[${1:index}];",
+            "\t$0",
+            "}"
+        ],
+        "description": "For Loop"
+		},
+			
+	"reducer": {
+        "prefix": "reducer",
+        "body": [
+            "import * as types from ${1:''}",
+            "\nconst initialState={}",
+            "\nexport default function reducer(state=initialState,action={}){",
+            "\tswitch(action.type){",
+            "\t\tcase types.${2:YOUR_ACTION_1}:",
+            "\t\t\treturn{ };",
+            "\n\t\tcase types.${2:YOUR_ACTION_2}:",
+            "\t\t\treturn{ };",
+            "\n\t\tdefault:return state;",
+            "\n",
+            "\t}",
+            "}"
+        ],
+        "description": "For Reducers"
+    },
+
+    "React Native Component": {
+        "prefix": "component",
+        "body": [
+            "import React, {Component} from 'react'",
+            "import {Container} from 'native-base'",
+            "export default class ${1:ComponentName} extends Component {",
+            "\tconstructor(props) {",
+            "\t\tsuper(props);",
+            "\t\tthis.state={};",
+            "\t}",
+            "\n\tcomponentWillMount(){",
+            "\t}",
+            "\n\tcomponentWillUpdate(){",
+            "\t}",    
+            "\n\trender(){",
+            "\t\treturn(",
+            "\t\t\t<Container>",
+            "\t\t\t</Container>",
+            "\t\t)",
+            "\t}",
+            "\n\tcomponentDidUpdate(){",
+            "\t}",
+            "\n\tcomponentDidMount(){",
+            "\t}",
+            "}"
+        ],
+        "description": "For Components"
+    },
+
+    "React Native Action": {
+        "prefix": "action",
+        "body": [
+            "import * as types from ${1:''}",
+            "export function ${1:ActionIng}(){",
+            "\treturn {",
+            "\t\ttype:types.${1:ACTION_ING}",    
+            "\t};",    
+            "}",
+            "\nexport function ${1:ActionSuccess}(){",
+            "\treturn {",
+            "\t\ttype:types.${1:ACTION_SUCCESS}",    
+            "\t};",    
+            "}",
+            "\nexport function ${1:ActionFailure}(){",
+            "\treturn {",
+            "\t\ttype:types.${1:ACTION_FAILURE}",    
+            "\t};",    
+            "}",
+            "\nexport function ${1:ActionWithMiddleware}(){",
+            "\treturn dispatch=>{",
+            "\t};",    
+            "}"
+        ],
+        "description": "For Actions"
+    },
+
+        "React Native Container": {
+        "prefix": "container",
+         "body": [
+            "import React, {Component} from 'react'",
+            "import {Container} from 'native-base'",
+            "import ${1:DumpComponent} from ${1:''}",
+            "import {bindActionCreators} from 'redux'",
+            "import {connect} from 'react-redux'",
+            "import * as types from ${1:''}",
+            "import * as ${1:youActions} from ${1:' '}",
+            "class ${1:ContainerName} extends Component {",
+            "\tconstructor(props) {",
+            "\t\tsuper(props);",
+            "\t\tthis.state={};",
+            "\t}",
+            "\n\trender(){",
+            "\tconst {actionData,actions} = this.props;",    
+            "\t\treturn(",
+            "\t\t\t<${1:DumpComponent}",
+            "\t\t\t\tactionData={actionData}",
+            "\t\t\t\t{...actions}",
+            "\t\t\t\t{...this.props}",
+            "\t\t\t/>",
+            "\t\t)",
+            "\t}",
+            "}",
+            "\n\tfunction mapStateToProps(state){",
+            "\t\treturn {",
+            "\t\t\tactionData:state.${1:actionReducer}",
+            "\t\t}",
+            "\t}",
+            "\n\tfunction mapDispatchToProps(dispatch){",
+            "\t\treturn {",
+            "\t\t\tactions:bindActionCreators(${1:youActions},dispatch)",
+            "\t\t}",
+            "\t}",
+            "\nexport default connect(",
+            "\tmapStateToProps,",
+            "\tmapDispatchToProps",
+            ")(${1:ContainerName})"
+            
+        ],
+        "description": "For Actions"
+    },
+
+    "React Native ListComponent": {
+        "prefix": "listcomponent",
+        "body": [
+            "import React, {Component} from 'react'",
+            "import {View, ListView, TouchableOpacity} from 'react-native'",
+            "export default class ${1:ListComponentName} extends Component {",
+            "\tconstructor(props) {",
+            "\t\tsuper(props);",
+            "\t\tthis.state={",
+            "\t\t\tdataSource:new ListView.DataSource({",
+            "\t\t\t\trowHasChanged: (r1,r2) => r1 !== r2",        
+            "\t\t\t\t})",
+            "\t\t};",    
+            "\t}",
+            "\n\tcomponentWillMount(){",
+            "\t}",
+            "\n\tcomponentWillUpdate(){",
+            "\t}",    
+            "\n\trender(){",
+            "\t\treturn(",
+            "\t\t\t<ListView",
+            "\t\t\t\tdataSource={this.state.dataSource.cloneWithRows(",
+            "\t\t\t\t\t${1:listData}",
+            "\t\t\t\t)}",
+            "\t\t\t\trenderRow={this._renderRow.bind(this)}",         
+            "\t\t\t/>",
+            "\t\t)",
+            "\t}",
+            "\n\t_renderRow(item){",
+            "\t\treturn(",
+            "\t\t\t<TouchableOpacity",
+            "\t\t\t\tonPress={() => this._pressItem(item)}",
+            "\t\t\t>",
+            "\t\t\t\t<View>",
+            "\t\t\t\t</View>",
+            "\t\t\t</TouchableOpacity>",
+            "\t\t);",        
+            "\t}",
+             "\n\t_pressItem(){",
+            "\t}",
+            "\n\tcomponentDidUpdate(){",
+            "\t}",
+            "\n\tcomponentDidMount(){",
+            "\t\tthis.${1:_loadData}()",
+            "\t}",
+            "\n\t${1:_loadData}(){",
+            "\t}",
+            "}"
+        ],
+        "description": "For List Components"
+    },
+     "import" :{
+     "prefix": "import",
+     "body": [
+         "import {} from ${1:''}",
+         "$2"
+     ],
+     "description": "Import"
+
+ }
+    ,
+     "construtor" :{
+     "prefix": "construtor",
+     "body": [
+         "\tconstructor(props) {",
+            "\t\tsuper(props);",
+            "\t\tthis.state={};",
+            "\t}"
+     ],
+     "description": "Construtor"
+
+ },
+    
+    "database": {
+		"prefix": "database",
+		"body": [
+			"import Realm from 'realm';",
+			"//using uuid: npm install --save uuid",
+			"const uuid = require('uuid');",
+			"//ClassName={id:'',value:''}",
+			"class ClassName {",
+			"\tstatic get() { return realm.objects(ClassName.schema.name) }",
+			"\tstatic schema = {",
+			"\t\tname: 'ClassName',",
+			"\t\tprimaryKey: 'id',",
+			"\t\tproperties: {",
+			"\t\t\tid: { type: 'string' },",
+			"\t\t\tvalue: { type: 'string' },",
+			"\t\t\tcompleted: { type: 'bool', default: false },",
+			"\t\t\tcreatedTimestamp: { type: 'date' }",
+			"\t\t}",
+			"\t}",
+			"}\n",
+			"// get all items",
+			"export const getAllItems = () => {",
+			"\tconst Items = ClassName.get().sorted('createdTimestamp', true);",
+			"\tItems.forEach((value) => {",
+			"\t\tconsole.log(value)",
+			"\t});",
+			"\treturn Items;",
+			"}\n",
+			"//get item by id",
+			"export const getItem = (id) => {",
+			"\tconst Item = realm.objectForPrimaryKey(ClassName, id)",
+			"\treturn Item",
+			"}\n",
+			"//update item",
+			"export const updateItem = (id, value, completed) => {",
+			"\tlet dbobj=getItem(id);",
+			"\trealm.write(() => {",
+			"\t\ttry {",
+			"\t\t\tdbobj.value = value",
+			"\t\t\tdbobj.completed = completed",
+			"\t\t\tconsole.log('update oke')",
+			"\t\t} catch (e) {",
+			"\t\t\tconsole.warn(e);",
+			"\t\t}",
+			"\t})",
+			"}\n",
+			"//create item",
+			"export const createItem = (value) => {",
+			"\trealm.write(() => {",
+			"\t\trealm.create(ClassName.schema.name, {",
+			"\tid: uuid.v1(),",
+			"\tvalue,",
+			"\tcreatedTimestamp: new Date()",
+			"\t\t})",
+			"\t})",
+			"}\n",
+			"//delete item by id",
+			"export const deleteItem = (id) => {",
+			"\trealm.write(() => {",
+			"\t\trealm.delete(getItem(id));",
+			"\t\tconsole.log('delete oke');",
+			"\t})",
+			"}\n",
+			"const realm = new Realm({ schema: [ClassName] })"
+		],
+		"description": "snippet realm database"
+    },
+    "Import react": {
+    "prefix": "imr",
+    "body": [
+      "import React from 'react';"
+    ],
+    "description": "Import react"
+  },
+  "Import react component": {
+    "prefix": "imrc",
+    "body": [
+      "import React, { Component } from 'react';"
+    ],
+    "description": "Import react component"
+  },
+  "Import React-Native Element": {
+    "prefix": "imrn",
+    "body": "import { $1 } from 'react-native';",
+    "description": "Import React-Native Element"
+  },
+  "Import Styled-Components": {
+    "prefix": "ims",
+    "body": "import styled from 'styled-components';",
+    "description": "Import Styled-Components"
+  },
+  "Import Styled-Components Native": {
+    "prefix": "imsn",
+    "body": "import styled from 'styled-components/native';",
+    "description": "Import Styled-Components"
+  },
+  "Redux constant": {
+    "prefix": "ec",
+    "body": "export const $1 = '$1';"
+  },
+  "Print to console": {
+    "prefix": "cl",
+    "body": [
+      "console.log($1)"
+    ],
+    "description": "Log output to console"
+  },
+  "Export default": {
+    "prefix": "ed",
+    "body": [
+      "export default $1;"
+    ],
+    "description": "Export default"
+  },
+  "EslintDisableLine": {
+    "prefix": "edl",
+    "body": "// eslint-disable-line",
+    "description": "Eslint Disable Line"
+  },
+  "Comment Block": {
+    "prefix": "cm",
+    "body": [
+      "/**",
+      " * ${1}",
+      " */"
+    ]
+  },
+  "Stateless Component": {
+    "prefix": "sl",
+    "body": [
+      "const $1 = () => (",
+      "\t$2",
+      ");",
+      "",
+      "export default $1;"
+    ]
+  },
+  "Stateless Component Return": {
+    "prefix": "slr",
+    "body": [
+      "const $1 = () => {",
+      "\treturn (",
+      "\t\t$2",
+      "\t);",
+      "}",
+      "",
+      "export default $1;"
+    ]
+  },
+  "Redux Reducer": {
+    "prefix": "rrd",
+    "body": [
+      "export default (state = $1, action) => {",
+      "\tswitch (action.type) {",
+      "\t\tcase $2:",
+      "\t\t\t$3",
+      "\t\tdefault:",
+      "\t\t\treturn state;",
+      "\t}",
+      "};"
+    ]
+  },
+  "Redux Pure Function": {
+    "prefix": "rpf",
+    "body": [
+      "export const $1 = '$1';",
+      "",
+      "export function $2($3) {",
+      "\treturn {",
+      "\t\ttype: $1,",
+      "\t\t$3",
+      "\t}",
+      "}"
+    ]
+  },
+  "Redux Pure Function Const": {
+    "prefix": "rpc",
+    "body": [
+      "export const $1 = '$1';",
+      "",
+      "export const $2 = $3 => ({",
+      "\ttype: $1,",
+      "\t$3",
+      "});"
+    ]
+  },
+  "Comment Big Block": {
+    "prefix": "cmmb",
+    "body": [
+      "/**",
+      "|--------------------------------------------------",
+      "| $1",
+      "|--------------------------------------------------",
+      "*/"
+    ]
+  },
+  "ComponentWillMount": {
+    "prefix": "cwm",
+    "body": [
+      "componentWillMount() {",
+      "\t$1",
+      "}"
+    ]
+  },
+  "ComponentWillUpdate": {
+    "prefix": "cwu",
+    "body": [
+      "componentWillUpdate() {",
+      "\t$1",
+      "}"
+    ]
+  },
+  "ComponentDidUpdate": {
+    "prefix": "cdu",
+    "body": [
+      "componentDidUpdate(prevProps, prevState) {",
+      "\t$1",
+      "}"
+    ]
+  },
+  "ComponentWillReceiveProps": {
+    "prefix": "cwrp",
+    "body": [
+      "componentWillReceiveProps(nextProps) {",
+      "\t$1",
+      "}"
+    ]
+  },
+  "Comment big line": {
+    "prefix": "cbl",
+    "body": "// ============================================================"
+  },
+  "Component Class": {
+    "prefix": "ccs",
+    "body": [
+      "class $1 extends Component {",
+      "\tstate = { $2 }",
+      "\trender() {",
+      "\t\treturn (",
+      "\t\t\t$3",
+      "\t\t);",
+      "\t}",
+      "}",
+      "",
+      "export default $1;"
+    ]
+  },
+  "Export default Component Class": {
+    "prefix": "edccs",
+    "body": [
+      "export default class $1 extends Component {",
+      "\tstate = { $2 }",
+      "\trender() {",
+      "\t\treturn (",
+      "\t\t\t$3",
+      "\t\t);",
+      "\t}",
+      "}"
+    ]
+  },
+  "Connect Redux": {
+    "prefix": "crr",
+    "body": "import { connect } from 'react-redux';"
+  },
+  "ComponentDidMount": {
+    "prefix": "cdm",
+    "body": [
+      "componentDidMount() {",
+      "\t$1",
+      "}"
+    ]
+  },
+  "EStyleSheet Style": {
+    "prefix": "cstyles",
+    "body": [
+      "import EStyleSheet from 'react-native-extended-stylesheet';",
+      "",
+      "const styles = EStyleSheet.create({",
+      "\t$1",
+      "});",
+      "",
+      "export default styles;"
+    ]
+  },
+  "Stateless Component Function": {
+    "prefix": "ecf",
+    "body": [
+      "function $1($2) {",
+      "\t$3",
+      "}",
+      "",
+      "export default $1;"
+    ]
+  },
+
+
+  "ComponentWillUnmount": {
+    "prefix": "cwum",
+    "body": [
+      "componentWillUnmount() {",
+      "\t$1",
+      "}"
+    ]
+  },
+  "Console Log": {
+    "prefix": "log",
+    "body": [
+      "console.log($1);"
+    ]
+  },
+  "Test Describe": {
+		"prefix": "tdesc",
+		"body": [
+			"describe('$1', () => {",
+			"\t$2",
+			"});"
+		]
+	},
+	"Test it": {
+		"prefix": "tit",
+		"body": [
+			"it('should $1', $2($3) => {",
+			"\t$4",
+			"});"
+		]
+	}
+
+    
+
+
+
+
+}
