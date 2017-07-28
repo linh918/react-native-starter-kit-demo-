@@ -1,4 +1,7 @@
 import * as types from ''
+/**
+ * Example action
+ */
 export function ActionIng(){
   return {
     type:types.ACTION_ING

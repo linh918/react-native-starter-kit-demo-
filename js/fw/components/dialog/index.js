@@ -10,6 +10,7 @@ import {
   Right,
   Body,
   Title,
+  Toast
 
 } from 'native-base'
 
@@ -45,7 +46,13 @@ export default class CustomDialog extends Component {
         <Button
           transparent
           onPress={() => {
-            this.popupDialog.show();
+          //  this.popupDialog.show();
+          Toast.show({
+            text:'alo',
+            buttonText:'alo',
+            position:'bottom'
+            
+          })
           }}
         >
         <Text>Show dialog</Text>

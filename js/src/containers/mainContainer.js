@@ -7,6 +7,7 @@ import { bindActionCreators } from "redux";
 import { connect, Provider } from "react-redux";
 import nav from "../reducers/navigatorReducer";
 import configureStore from "../store/configureStore";
+import {Root} from 'native-base';
 
 let store = configureStore();
 
@@ -32,7 +33,9 @@ export default class MainContainer extends Component {
   render() {
     return (
       <Provider store={store}>
+        <Root>
         <AppWithNavigation />
+        </Root>
       </Provider>
     );
   }

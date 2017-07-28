@@ -1,3 +1,6 @@
+/**
+ * Example dump-component
+ */
 import React, {Component} from 'react'
 import {Container} from 'native-base'
 export default class ComponentName extends Component {
