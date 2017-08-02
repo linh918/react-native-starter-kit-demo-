@@ -78,11 +78,12 @@ import IconActionSheet from "../../fw/components/actionsheet/icon";
 import AdvSegment from "../../fw/components/segment/segmentTab";
 import SimpleDeck from "../../fw/components/deckswiper/simple";
 import AdvancedDeck from "../../fw/components/deckswiper/advanced";
-
+import CGV from '../containers/main'
 export default (Navigator = new StackNavigator(
   {
+   
     Drawer: { screen: Drawer },
-
+ CGV:{screen:CGV},
     Header1: { screen: Header1 },
     Header2: { screen: Header2 },
     Header3: { screen: Header3 },

@@ -37,11 +37,14 @@ import Toast from "./components/toast";
 import Actionsheet from "./components/actionsheet";
 import ViewPager from './components/viewpager/index'
 import PopUpDialog from './components/dialog/index'
+import CGV from '../src/containers/main'
 const DrawerExample = DrawerNavigator(
-  {
+  { 
+   CGV:{screen:CGV},
      Home: { screen: Home },
      PopUpDialog:{screen:PopUpDialog},
       ViewPager:{screen:ViewPager},
+     
     Anatomy: { screen: Anatomy },
     Header: { screen: Header },
     Footer: { screen: Footer },
@@ -73,7 +76,7 @@ const DrawerExample = DrawerNavigator(
     Actionsheet: { screen: Actionsheet }
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "CGV",
     contentOptions: {
       activeTintColor: "#e91e63"
     },
