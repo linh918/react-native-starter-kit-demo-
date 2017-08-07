@@ -19,7 +19,7 @@ import * as changeColorActions from "../actions/changeColorActions";
     const { fetchActionData, fetchs,changeColorActionData,changeColors } = this.props;
     return (
       <Container>
-        <MainHeader changeColorActionData={changeColorActionData} {...this.props}  />
+        <MainHeader title="CulturePlex" {...this.props}  />
         <Content>
           <Phim 
             fetchActionData={fetchActionData}

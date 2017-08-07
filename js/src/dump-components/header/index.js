@@ -36,10 +36,10 @@ export default class MainHeader extends Component {
           <TouchableOpacity onPress={()=>this.props.navigation.navigate('DrawerOpen')}>
           <Image source={ic_user} style={styles.imageUser}  />
           </TouchableOpacity>
-          <Text>CulturerPlex</Text>
+          <Text>{this.props.title}</Text>
         </Left>
         <Right>
-          <Icon name="menu" style={{ color: this.props.changeColorActionData.color }}   />
+          <Icon name="menu" style={{ color: 'red' }}   />
         </Right>
       </Header>
     );

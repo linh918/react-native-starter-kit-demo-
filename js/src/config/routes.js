@@ -79,11 +79,13 @@ import AdvSegment from "../../fw/components/segment/segmentTab";
 import SimpleDeck from "../../fw/components/deckswiper/simple";
 import AdvancedDeck from "../../fw/components/deckswiper/advanced";
 import CGV from '../containers/main'
+import PlatformDemo from '../containers/platformDemo'
 export default (Navigator = new StackNavigator(
   {
    
     Drawer: { screen: Drawer },
- CGV:{screen:CGV},
+    CGV:{screen:CGV},
+     PlatformDemo:{screen:PlatformDemo},
     Header1: { screen: Header1 },
     Header2: { screen: Header2 },
     Header3: { screen: Header3 },

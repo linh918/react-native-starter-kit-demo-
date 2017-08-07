@@ -1,17 +1,39 @@
 'use strict';
-import { PropTypes } from 'react';
-import { NativeModules, requireNativeComponent, View } from 'react-native';
+import React, { Component, PropTypes } from 'react';  
+import { NativeModules, requireNativeComponent, View, Text } from 'react-native';
 
-var iface = {
-  name: 'TimePicker',
-  propTypes: {
-   timeChange: PropTypes.func,
-   hour:PropTypes.number,
-   minute:PropTypes.number,
-   enabled:PropTypes.bool,
-    ...View.propTypes // include the default view properties
-  },
-};
-var TimePicker = requireNativeComponent('TimePicker', iface);
+class TimePickerComponent extends Component {
 
-export default TimePicker;
+    constructor(props) {
+        super(props);
+        this._onChange = this._onChange.bind(this);
+    }
+
+    _onChange(event) {
+      console.log("event");
+        if(!this.props.onTimeChange) {
+            return;
+        }
+        this.props.onTimeChange(event.nativeEvent);
+    }
+
+    render() {
+        return <TimePickerView {...this.props} onChange={this._onChange} />;
+    }
+}
+
+
+TimePickerComponent.propTypes = {
+	hour: PropTypes.number,
+	minute: PropTypes.number,
+	onTimeChange: PropTypes.func,
+	...View.propTypes,
+}
+
+const TimePickerView = requireNativeComponent(`TimePicker`, TimePickerComponent, {
+	nativeOnly: { 
+		onChange: true,
+	},
+});
+
+export default TimePickerComponent;

@@ -25,6 +25,12 @@ const drawerCover = require("../../../img/drawer-cover.png");
 const drawerImage = require("../../../img/logo-kitchen-sink.png");
 
 const datas = [
+  {
+    name: "PlatformDemo",
+    route: "PlatformDemo",
+    icon: "phone-portrait",
+    bg: "#C5F442"
+  },
    {
     name: "CGV",
     route: "CGV",

@@ -12,11 +12,9 @@ export default class ComponentA extends BaseComponent {
     this.state={};
   }
 
-  componentWillMount(){
-  }
 
-  componentWillUpdate(){
-  }
+
+ 
 
   render(){
    return(
@@ -24,15 +22,8 @@ export default class ComponentA extends BaseComponent {
       title="Home"
       content={(
         <View>
-        <Text>Home</Text>
-        
-        <TimePicker
-        hour={3}
-        minute={50}
-        enabled={true}
-        timeChange={(hourOfDay,minute)=>{
-          console.log(hourOfDay+":"+minute);
-        }}
+        <Text>Home Ios</Text>
+      
       />
         </View>
       )}
@@ -41,11 +32,7 @@ export default class ComponentA extends BaseComponent {
     ) 
   }
 
-  componentDidUpdate(){
-  }
-
-  componentDidMount(){
-  }
+ 
 }
 
 const styles = StyleSheet.create({

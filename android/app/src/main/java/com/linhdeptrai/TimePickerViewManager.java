@@ -21,7 +21,10 @@ public class TimePickerViewManager extends SimpleViewManager<TimePicker> {
 
     @Override
     protected TimePicker createViewInstance(ThemedReactContext reactContext) {
-        return new TimePicker(reactContext);
+        TimePicker timePicker= new TimePicker(reactContext);
+        onReceiveNativeEvent(reactContext,timePicker);
+        timePicker.setIs24HourView(true);
+        return timePicker;
     }
 
      public void onReceiveNativeEvent(final ThemedReactContext reactContext, final TimePicker timePicker) {
@@ -32,7 +35,7 @@ public class TimePickerViewManager extends SimpleViewManager<TimePicker> {
                 WritableMap event = Arguments.createMap();
                 event.putInt("hourOfDay", hourOfDay);
                 event.putInt("minute", minute);
-                reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(timePicker.getId(), "timeChange", event);
+                reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(timePicker.getId(), "topChange", event);
             }
         });
     }
@@ -49,8 +52,5 @@ public class TimePickerViewManager extends SimpleViewManager<TimePicker> {
        view.setCurrentMinute(minute); // before api level 23
        
     }
-  @ReactProp(name = "enabled", defaultBoolean = false)
-    public void setEnabled(TimePicker view, boolean enabled) {
-        view.setEnabled (enabled);
-    }
+ 
 }

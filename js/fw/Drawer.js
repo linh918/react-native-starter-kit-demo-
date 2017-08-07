@@ -38,9 +38,11 @@ import Actionsheet from "./components/actionsheet";
 import ViewPager from './components/viewpager/index'
 import PopUpDialog from './components/dialog/index'
 import CGV from '../src/containers/main'
+import PlatformDemo from '../src/containers/platformDemo'
 const DrawerExample = DrawerNavigator(
   { 
-   CGV:{screen:CGV},
+    CGV:{screen:CGV},
+    PlatformDemo:{screen:PlatformDemo},
      Home: { screen: Home },
      PopUpDialog:{screen:PopUpDialog},
       ViewPager:{screen:ViewPager},
